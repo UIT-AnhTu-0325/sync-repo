@@ -8,6 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -92,22 +93,31 @@ func PostAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, result)
 }
 
-// func GetAlbumById(c *gin.Context) {
-// 	id := c.Param("id")
-// 	for _, a := range albums {
-// 		if a.ID == id {
-// 			c.IndentedJSON(http.StatusOK, a)
-// 			return
-// 		}
-// 	}
-// 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
-// }
+func GetAlbumById(c *gin.Context) {
+	client := GetMongo()
+	defer func() {
+		if err := client.Disconnect(context.TODO()); err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("Closed MongoDB!")
+	}()
+	collection := client.Database("test").Collection("albums")
+
+	var result album
+	filter := bson.D{primitive.E{Key: "id", Value: c.Param("id")}}
+	err := collection.FindOne(context.TODO(), filter).Decode(&result)
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": err.Error()})
+		return
+	}
+	c.IndentedJSON(http.StatusOK, result)
+}
 
 func main() {
 
 	router := gin.Default()
 	router.GET("/albums", GetAlbums)
-	// router.GET("/albums/:id", GetAlbumById)
+	router.GET("/albums/:id", GetAlbumById)
 	router.POST("/albums", PostAlbums)
 
 	router.Run("localhost:8080")
