@@ -19,11 +19,11 @@ var albums = []album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
 }
 
-func getAlbums(c *gin.Context) {
+func GetAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
 
-func postAlbums(c *gin.Context) {
+func PostAlbums(c *gin.Context) {
 	var newAlbum album
 
 	if err := c.BindJSON(&newAlbum); err != nil {
@@ -34,7 +34,7 @@ func postAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
-func getAlbumById(c *gin.Context) {
+func GetAlbumById(c *gin.Context) {
 	id := c.Param("id")
 	for _, a := range albums {
 		if a.ID == id {
@@ -47,9 +47,9 @@ func getAlbumById(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	router.GET("/albums", getAlbums)
-	router.GET("/albums/:id", getAlbumById)
-	router.POST("/albums", postAlbums)
+	router.GET("/albums", GetAlbums)
+	router.GET("/albums/:id", GetAlbumById)
+	router.POST("/albums", PostAlbums)
 
 	router.Run("localhost:8080")
 }
