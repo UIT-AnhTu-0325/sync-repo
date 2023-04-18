@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"strconv"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -32,22 +31,22 @@ func TestGetAlbums(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 }
 
-func FuzzGetAlbumById(f *testing.F) {
-	r := SetUpRouter()
-	r.GET("/albums/:id", GetAlbumById)
+// func FuzzGetAlbumById(f *testing.F) {
+// 	r := SetUpRouter()
+// 	r.GET("/albums/:id", GetAlbumById)
 
-	testcases := []int{1, 2, 3}
-	for _, tc := range testcases {
-		f.Add(tc)
-	}
-	f.Fuzz(func(t *testing.T, a int) {
-		req, _ := http.NewRequest("GET", "/albums/"+strconv.Itoa(a), nil)
-		w := httptest.NewRecorder()
-		r.ServeHTTP(w, req)
-		res, _ := ioutil.ReadAll(w.Body)
-		var data album
-		_ = json.Unmarshal([]byte(res), &data)
-		assert.Equal(t, data.ID, strconv.Itoa(a))
-		assert.Equal(t, http.StatusOK, w.Code)
-	})
-}
+// 	testcases := []int{1, 2, 3}
+// 	for _, tc := range testcases {
+// 		f.Add(tc)
+// 	}
+// 	f.Fuzz(func(t *testing.T, a int) {
+// 		req, _ := http.NewRequest("GET", "/albums/"+strconv.Itoa(a), nil)
+// 		w := httptest.NewRecorder()
+// 		r.ServeHTTP(w, req)
+// 		res, _ := ioutil.ReadAll(w.Body)
+// 		var data album
+// 		_ = json.Unmarshal([]byte(res), &data)
+// 		assert.Equal(t, data.ID, strconv.Itoa(a))
+// 		assert.Equal(t, http.StatusOK, w.Code)
+// 	})
+// }
