@@ -8,6 +8,9 @@ import (
 	"strconv"
 	"testing"
 
+	"example/web-service-gin/controllers"
+	"example/web-service-gin/models"
+
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/assert/v2"
 )
@@ -19,7 +22,7 @@ func SetUpRouter() *gin.Engine {
 
 func TestGetAlbums(t *testing.T) {
 	r := SetUpRouter()
-	r.GET("/albums", GetAlbums)
+	r.GET("/albums", controllers.GetAlbums)
 	req, _ := http.NewRequest("GET", "/albums", nil)
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
@@ -34,7 +37,7 @@ func TestGetAlbums(t *testing.T) {
 
 func FuzzGetAlbumById(f *testing.F) {
 	r := SetUpRouter()
-	r.GET("/albums/:id", GetAlbumById)
+	r.GET("/albums/:id", controllers.GetAlbumById)
 
 	testcases := []int{1, 2, 3}
 	for _, tc := range testcases {
@@ -45,7 +48,7 @@ func FuzzGetAlbumById(f *testing.F) {
 		w := httptest.NewRecorder()
 		r.ServeHTTP(w, req)
 		res, _ := ioutil.ReadAll(w.Body)
-		var data album
+		var data models.Album
 		_ = json.Unmarshal([]byte(res), &data)
 		assert.Equal(t, data.ID, strconv.Itoa(a))
 		assert.Equal(t, http.StatusOK, w.Code)
