@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"testing"
 
-	"example/web-service-gin/controllers"
-	"example/web-service-gin/models"
+	"example/webservice-gin/controllers"
+	"example/webservice-gin/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/assert/v2"

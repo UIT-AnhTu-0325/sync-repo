@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"example/web-service-gin/models"
+	"example/webservice-gin/models"
 	"fmt"
 	"net/http"
 	"time"

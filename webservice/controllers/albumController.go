@@ -11,8 +11,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"example/web-service-gin/database"
-	"example/web-service-gin/models"
+	"example/webservice-gin/database"
+	"example/webservice-gin/models"
 )
 
 func GetAlbums(c *gin.Context) {
