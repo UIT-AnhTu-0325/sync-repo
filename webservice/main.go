@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"example/webservice-gin/handlers"
+	"example/webservice-gin/handler"
 	"log"
 	"net/http"
 	"os"
@@ -17,7 +17,7 @@ func main() {
 	log.Println("Starting server...")
 
 	router := gin.Default()
-	handlers.NewHandler(&handlers.Config{
+	handler.NewHandler(&handler.Config{
 		R: router,
 	})
 

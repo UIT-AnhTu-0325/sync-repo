@@ -16,22 +16,27 @@ var users = map[string]string{
 }
 var jwtKey = []byte("my_secret_key")
 
+type Claims struct {
+	Username string `json:"username"`
+	jwt.RegisteredClaims
+}
+
 func Signin(c *gin.Context) {
-	var user models.Users
+	var user models.User
 	if err := c.BindJSON(&user); err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	expectedPassword, ok := users[user.Username]
+	expectedPassword, ok := users[user.Email]
 	if !ok || expectedPassword != user.Password {
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{})
 		return
 	}
 
 	expirationTime := time.Now().Add(5 * time.Minute)
-	claims := &models.Claims{
-		Username: user.Username,
+	claims := &Claims{
+		Username: user.Email,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate((expirationTime)),
 		},
@@ -56,7 +61,7 @@ func Welcome(c *gin.Context) {
 		return
 	}
 
-	claims := &models.Claims{}
+	claims := &Claims{}
 
 	tkn, err := jwt.ParseWithClaims(cookie, claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
