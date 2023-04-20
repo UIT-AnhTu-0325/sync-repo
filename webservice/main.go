@@ -13,10 +13,20 @@ import (
 
 func main() {
 	router := routes.GetRoute()
+	log.Println("Starting server...")
+
 	srv := &http.Server{
 		Addr:    ":8080",
 		Handler: router,
 	}
+
+	// Graceful server shutdown - https://github.com/gin-gonic/examples/blob/master/graceful-shutdown/graceful-shutdown/server.go
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Failed to initialize server: %v\n", err)
+		}
+	}()
+
 	log.Printf("Listening on port %v\n", srv.Addr)
 
 	// Wait for kill signal of channel

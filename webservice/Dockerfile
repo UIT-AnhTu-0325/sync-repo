@@ -1,13 +1,12 @@
-FROM golang:1.20 as builder
+FROM golang:alpine as builder
 
 WORKDIR /go/src/app
-
 ENV GO111MODULE=on
+
 
 COPY go.mod .
 COPY go.sum .
 
-RUN go get github.com/cespare/reflex
 RUN go mod download
 
 COPY . .
