@@ -9,6 +9,9 @@ COPY go.sum .
 
 RUN go mod download
 
+RUN go get github.com/cespare/reflex
+RUN go install github.com/cespare/reflex
+
 COPY . .
 
 RUN go build -o ./run .
