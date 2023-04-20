@@ -2,25 +2,30 @@ package main
 
 import (
 	"context"
-	"example/webservice-gin/routes"
+	"example/webservice-gin/handlers"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := routes.GetRoute()
 	log.Println("Starting server...")
+
+	router := gin.Default()
+	handlers.NewHandler(&handlers.Config{
+		R: router,
+	})
 
 	srv := &http.Server{
 		Addr:    ":8080",
 		Handler: router,
 	}
 
-	// Graceful server shutdown - https://github.com/gin-gonic/examples/blob/master/graceful-shutdown/graceful-shutdown/server.go
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Failed to initialize server: %v\n", err)
