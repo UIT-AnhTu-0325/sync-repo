@@ -40,4 +40,5 @@ func NewHandler(c *Config) {
 
 	//Handler with DI
 	g.GET("/me", h.Me)
+	g.POST("/signup", h.Signup)
 }
