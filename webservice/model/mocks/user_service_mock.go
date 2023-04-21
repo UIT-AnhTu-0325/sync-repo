@@ -2,7 +2,7 @@ package mocks
 
 import (
 	"context"
-	"example/webservice-gin/models"
+	"example/webservice-gin/model"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/mock"
@@ -12,12 +12,12 @@ type MockUserService struct {
 	mock.Mock
 }
 
-func (m *MockUserService) Get(ctx context.Context, uid uuid.UUID) (*models.User, error) {
+func (m *MockUserService) Get(ctx context.Context, uid uuid.UUID) (*model.User, error) {
 	ret := m.Called(ctx, uid)
 
-	var r0 *models.User
+	var r0 *model.User
 	if ret.Get(0) != nil {
-		r0 = ret.Get(0).(*models.User)
+		r0 = ret.Get(0).(*model.User)
 	}
 
 	var r1 error

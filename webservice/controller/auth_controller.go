@@ -1,7 +1,7 @@
-package controllers
+package controller
 
 import (
-	"example/webservice-gin/models"
+	"example/webservice-gin/model"
 	"fmt"
 	"net/http"
 	"time"
@@ -22,7 +22,7 @@ type Claims struct {
 }
 
 func Signin(c *gin.Context) {
-	var user models.User
+	var user model.User
 	if err := c.BindJSON(&user); err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

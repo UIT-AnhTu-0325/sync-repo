@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"example/webservice-gin/controllers"
-	"example/webservice-gin/models"
+	"example/webservice-gin/controller"
+	"example/webservice-gin/model"
 	"net/http"
 	"os"
 
@@ -10,12 +10,12 @@ import (
 )
 
 type Handler struct {
-	UserService models.UserService
+	UserService model.UserService
 }
 
 type Config struct {
 	R           *gin.Engine
-	UserService models.UserService
+	UserService model.UserService
 }
 
 func NewHandler(c *Config) {
@@ -30,13 +30,13 @@ func NewHandler(c *Config) {
 		})
 	})
 	//Demo API with mongoDB
-	g.GET("/albums", controllers.GetAlbums)
-	g.GET("/albums/:id", controllers.GetAlbumById)
-	g.POST("/albums", controllers.PostAlbums)
+	g.GET("/albums", controller.GetAlbums)
+	g.GET("/albums/:id", controller.GetAlbumById)
+	g.POST("/albums", controller.PostAlbums)
 
 	//Cookie-based authentication
-	g.POST("/signin", controllers.Signin)
-	g.GET("/welcome", controllers.Welcome)
+	g.POST("/signin", controller.Signin)
+	g.GET("/welcome", controller.Welcome)
 
 	//Handler with DI
 	g.GET("/me", h.Me)

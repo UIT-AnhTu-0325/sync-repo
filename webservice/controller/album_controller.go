@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"example/webservice-gin/database"
-	"example/webservice-gin/models"
+	"example/webservice-gin/model"
 )
 
 func GetAlbums(c *gin.Context) {
@@ -27,13 +27,13 @@ func GetAlbums(c *gin.Context) {
 	findOptions := options.Find()
 	findOptions.SetLimit(3)
 
-	var results []*models.Album
+	var results []*model.Album
 	cur, err := collection.Find(context.TODO(), bson.D{{}}, findOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 	for cur.Next(context.TODO()) {
-		var elem models.Album
+		var elem model.Album
 		err := cur.Decode(&elem)
 		if err != nil {
 			log.Fatal(err)
@@ -57,7 +57,7 @@ func PostAlbums(c *gin.Context) {
 	}()
 	collection := client.Database("test").Collection("albums")
 
-	var newAlbum models.Album
+	var newAlbum model.Album
 
 	if err := c.BindJSON(&newAlbum); err != nil {
 		return
@@ -82,7 +82,7 @@ func GetAlbumById(c *gin.Context) {
 	}()
 	collection := client.Database("test").Collection("albums")
 
-	var result models.Album
+	var result model.Album
 	filter := bson.D{primitive.E{Key: "id", Value: c.Param("id")}}
 	err := collection.FindOne(context.TODO(), filter).Decode(&result)
 	if err != nil {

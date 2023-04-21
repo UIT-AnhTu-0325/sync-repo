@@ -2,9 +2,9 @@ package handler
 
 import (
 	"encoding/json"
-	"example/webservice-gin/models"
-	"example/webservice-gin/models/apperrors"
-	"example/webservice-gin/models/mocks"
+	"example/webservice-gin/model"
+	"example/webservice-gin/model/apperrors"
+	"example/webservice-gin/model/mocks"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -23,7 +23,7 @@ func TestMe(t *testing.T) {
 	t.Run("Success", func(t *testing.T) {
 		uid, _ := uuid.NewRandom()
 
-		mockUserResp := &models.User{
+		mockUserResp := &model.User{
 			UID:   uid,
 			Email: "bob@bob.com",
 			Name:  "Bobby Bobson",
@@ -36,7 +36,7 @@ func TestMe(t *testing.T) {
 
 		router := gin.Default()
 		router.Use(func(c *gin.Context) {
-			c.Set("user", &models.User{
+			c.Set("user", &model.User{
 				UID: uid,
 			},
 			)
@@ -92,7 +92,7 @@ func TestMe(t *testing.T) {
 
 		router := gin.Default()
 		router.Use(func(c *gin.Context) {
-			c.Set("user", &models.User{
+			c.Set("user", &model.User{
 				UID: uid,
 			},
 			)
