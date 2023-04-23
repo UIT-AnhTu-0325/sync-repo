@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"example/webservice-gin/models"
-	"example/webservice-gin/models/apperrors"
+	"example/webservice-gin/model"
+	"example/webservice-gin/model/apperrors"
 	"log"
 	"net/http"
 
@@ -22,7 +22,7 @@ func (h *Handler) Me(c *gin.Context) {
 		return
 	}
 
-	uid := user.(*models.User).UID
+	uid := user.(*model.User).UID
 
 	u, err := h.UserService.Get(c, uid)
 
