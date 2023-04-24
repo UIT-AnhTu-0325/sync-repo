@@ -16,6 +16,15 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
+  postgres-web:
+    image: "postgres:alpine"
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - "pgdata_web:/var/lib/postgresql/data"
+    command: ["postgres", "-c", "log_statement=all"]
   webservice:
     build:
       context: ./webservice
@@ -32,3 +41,7 @@ services:
       - ./webservice:/go/src/app
     env_file: .env.dev
     command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    depends_on:
+      - postgres-web
+volumes:
+  pgdata_web:
