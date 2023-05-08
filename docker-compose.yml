@@ -39,7 +39,7 @@ services:
       - ENV=dev
     volumes:
       - ./webservice:/go/src/app
-    env_file: .env.dev
+    env_file: ./webservice/.env.dev
     command: reflex -r "\.go$$" -s -- sh -c "go run ./"
     depends_on:
       - postgres-web
