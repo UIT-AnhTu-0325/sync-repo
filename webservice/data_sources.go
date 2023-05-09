@@ -1,21 +1,25 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type dataSources struct {
-	DB *sqlx.DB
+	postgreDB *sqlx.DB
+	mongoDB   *mongo.Client
 }
 
 func initDS() (*dataSources, error) {
 	log.Printf("Initializing data sources\n")
-
+	//PostgreSQL
 	pgHost := os.Getenv("PG_HOST")
 	pgPort := os.Getenv("PG_PORT")
 	pgUser := os.Getenv("PG_USER")
@@ -29,21 +33,39 @@ func initDS() (*dataSources, error) {
 	db, err := sqlx.Open("postgres", pgConnString)
 
 	if err != nil {
-		return nil, fmt.Errorf("error opening db: %w", err)
+		return nil, fmt.Errorf("error opening postgre db: %w", err)
 	}
 
 	if err := db.Ping(); err != nil {
-		return nil, fmt.Errorf("error connecting to db: %w", err)
+		return nil, fmt.Errorf("error connecting to postgre db: %w", err)
 	}
 
+	//MongoDb
+	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+	opts := options.Client().ApplyURI("mongodb+srv://blinkcat:gaugau123@go-web-database.anwszwv.mongodb.net/?retryWrites=true&w=majority").SetServerAPIOptions(serverAPI)
+	client, err := mongo.Connect(context.TODO(), opts)
+	if err != nil {
+		return nil, fmt.Errorf("error connecting to mongo db: %w", err)
+	}
+	err = client.Ping(context.TODO(), nil)
+	if err != nil {
+		return nil, fmt.Errorf("error connecting to mongo db: %w", err)
+	}
+	log.Printf("Pinged your deployment. You successfully connected to MongoDB!\n")
+
 	return &dataSources{
-		DB: db,
+		postgreDB: db,
+		mongoDB:   client,
 	}, nil
 }
 
 func (d *dataSources) close() error {
-	if err := d.DB.Close(); err != nil {
+	if err := d.postgreDB.Close(); err != nil {
 		return fmt.Errorf("error closing Postgresql: %w", err)
+	}
+
+	if err := d.mongoDB.Disconnect(context.TODO()); err != nil {
+		return fmt.Errorf("error closing MongoDb: %w", err)
 	}
 
 	return nil

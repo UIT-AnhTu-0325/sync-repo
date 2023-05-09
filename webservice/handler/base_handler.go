@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"example/webservice-gin/controller"
 	"example/webservice-gin/model"
 	"net/http"
 	"os"
@@ -32,16 +31,8 @@ func NewHandler(c *Config) {
 			"Hello": "It's my world!",
 		})
 	})
-	//Demo API with mongoDB
-	g.GET("/albums", controller.GetAlbums)
-	g.GET("/albums/:id", controller.GetAlbumById)
-	g.POST("/albums", controller.PostAlbums)
 
-	//Cookie-based authentication
-	g.POST("/signin", controller.Signin)
-	g.GET("/welcome", controller.Welcome)
-
-	//Handler authenticate, using DI
+	//Handler authenticate
 	g.GET("/me", h.Me)
 	g.POST("/signup", h.Signup)
 }

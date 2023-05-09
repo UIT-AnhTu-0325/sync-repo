@@ -19,7 +19,7 @@ func inject(d *dataSources) (*gin.Engine, error) {
 	/*
 	 * repository layer
 	 */
-	userRepository := repository.NewUserRepository(d.DB)
+	userRepository := repository.NewUserRepository(d.postgreDB)
 
 	/*
 	 * repository layer
