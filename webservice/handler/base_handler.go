@@ -26,13 +26,12 @@ func NewHandler(c *Config) {
 		TokenService: c.TokenService,
 	}
 	//Test func
-	g.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
+	g.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{
 			"Hello": "It's my world!",
 		})
 	})
 
-	//Handler authenticate
 	g.GET("/me", h.Me)
 	g.POST("/signup", h.Signup)
 }
