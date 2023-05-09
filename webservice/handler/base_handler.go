@@ -3,7 +3,6 @@ package handler
 import (
 	"example/webservice-gin/model"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,10 +16,11 @@ type Config struct {
 	R            *gin.Engine
 	UserService  model.UserService
 	TokenService model.TokenService
+	BaseURL      string
 }
 
 func NewHandler(c *Config) {
-	g := c.R.Group(os.Getenv("WEB_SERVICE_API_URL"))
+	g := c.R.Group(c.BaseURL)
 	h := &Handler{
 		UserService:  c.UserService,
 		TokenService: c.TokenService,
