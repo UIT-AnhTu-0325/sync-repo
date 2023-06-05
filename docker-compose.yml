@@ -29,11 +29,9 @@ services:
     build:
       context: ./webservice
       dockerfile: Dockerfile
-      target: builder
     image: webservice
-    expose:
-      - "8090"
     ports:
+      - "8090:8090"
       - "4000:4000"
     labels:
       - "traefik.enable=true"
@@ -42,10 +40,7 @@ services:
       - "traefik.http.services.webservice.loadbalancer.server.port=8090"
     environment:
       - ENV=dev
-    volumes:
-      - ./webservice:/go/src/app
     env_file: ./webservice/.env.dev
-    command: go run ./
     depends_on:
       - postgres-web
 volumes:
