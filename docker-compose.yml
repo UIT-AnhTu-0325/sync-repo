@@ -28,7 +28,8 @@ services:
   webservice:
     build:
       context: ./webservice
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.debug
+      target: builder
     image: webservice
     ports:
       - "8090:8090"
