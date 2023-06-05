@@ -32,10 +32,14 @@ services:
       target: builder
     image: webservice
     expose:
-      - "8080"
+      - "8090"
+    ports:
+      - "4000:4000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.webservice.rule=Host(`blinkcat.programming`) && PathPrefix(`/api/webservice`)"
+      - "traefik.http.routers.foo.service=webservice"
+      - "traefik.http.services.webservice.loadbalancer.server.port=8090"
     environment:
       - ENV=dev
     volumes:

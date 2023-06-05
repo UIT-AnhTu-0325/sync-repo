@@ -20,5 +20,5 @@ WORKDIR /root/
 #Copy executable from builder
 COPY --from=builder /go/src/app/run .
 
-EXPOSE 8080
+EXPOSE 8090 4000
 CMD ["./run"]
