@@ -28,7 +28,7 @@ services:
   webservice:
     build:
       context: ./webservice
-      dockerfile: Dockerfile.debug
+      dockerfile: Dockerfile
       target: builder
     image: webservice
     ports:
