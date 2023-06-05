@@ -28,19 +28,20 @@ services:
   webservice:
     build:
       context: ./webservice
+      dockerfile: Dockerfile.debug
       target: builder
     image: webservice
-    expose:
-      - "8080"
+    ports:
+      - "8090:8090"
+      - "4000:4000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.webservice.rule=Host(`blinkcat.programming`) && PathPrefix(`/api/webservice`)"
+      - "traefik.http.routers.foo.service=webservice"
+      - "traefik.http.services.webservice.loadbalancer.server.port=8090"
     environment:
       - ENV=dev
-    volumes:
-      - ./webservice:/go/src/app
     env_file: ./webservice/.env.dev
-    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
     depends_on:
       - postgres-web
 volumes:
