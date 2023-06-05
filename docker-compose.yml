@@ -28,6 +28,7 @@ services:
   webservice:
     build:
       context: ./webservice
+      dockerfile: Dockerfile
       target: builder
     image: webservice
     expose:
@@ -40,7 +41,7 @@ services:
     volumes:
       - ./webservice:/go/src/app
     env_file: ./webservice/.env.dev
-    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+    command: go run ./
     depends_on:
       - postgres-web
 volumes:
