@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"strconv"
 
@@ -84,6 +85,8 @@ func inject(d *dataSources) (*gin.Engine, error) {
 	router := gin.Default()
 
 	baseURL := os.Getenv("WEB_SERVICE_API_URL")
+
+	router.StaticFS(baseURL+"/public", http.Dir("public/html"))
 
 	handler.NewHandler(&handler.Config{
 		R:            router,

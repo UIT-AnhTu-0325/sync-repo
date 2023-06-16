@@ -2,9 +2,7 @@ package handler
 
 import (
 	"example/webservice-gin/model"
-	"io"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -32,18 +30,6 @@ func NewHandler(c *Config) {
 		ctx.JSON(http.StatusOK, gin.H{
 			"Hello": "It's my world!",
 		})
-	})
-
-	g.GET("/home", func(ctx *gin.Context) {
-		f, err := os.Open("public/html/home.html")
-		if err != nil {
-			ctx.JSON(http.StatusInternalServerError, gin.H{
-				"Error": err,
-			})
-		}
-		defer f.Close()
-		ctx.Header(ctx.ContentType(), "text/css")
-		io.Copy(ctx.Writer, f)
 	})
 
 	g.GET("/me", h.Me)
