@@ -2,15 +2,14 @@
 #include <algorithm>
 #include <vector>
 #include <unordered_map>
+#include <string>
+#include <stack>
 using namespace std;
 
 int main()
 {
-    int i = 19;
-    int *a = &i;
-    int **b = &a;
+    string a;
+    getline(cin, a);
 
-    cout << i << '\t' << &i << endl
-         << a << '\t' << *a << '\t' << &a << endl
-         << b << '\t' << *b << '\t' << **b << endl;
+    stack<char> chk = stack<char>();
 }
