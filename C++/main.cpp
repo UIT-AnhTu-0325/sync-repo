@@ -9,8 +9,5 @@ using namespace std;
 
 int main()
 {
-    string a;
-    getline(cin, a);
-
-    stack<char> chk = stack<char>();
+    cout << "Hello world";
 }
