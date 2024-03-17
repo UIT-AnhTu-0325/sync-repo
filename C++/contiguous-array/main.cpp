@@ -7,8 +7,13 @@
 #include <sstream>
 using namespace std;
 
-class Solution {};
-
+class Solution
+{
+public:
+    int findMaxLength(vector<int> &nums)
+    {
+    }
+};
 int main()
 {
     Solution *solution = new Solution();

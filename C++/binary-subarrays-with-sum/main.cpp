@@ -7,7 +7,13 @@
 #include <sstream>
 using namespace std;
 
-class Solution {};
+class Solution
+{
+public:
+    int numSubarraysWithSum(vector<int> &nums, int goal)
+    {
+    }
+};
 
 int main()
 {
