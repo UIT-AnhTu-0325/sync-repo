@@ -1,0 +1,34 @@
+
+
+
+- min len, max len
+- special character
+- case
+- empty
+- sql injection
+
+- retry
+
+=> bảo mật hay ko 
+
+ vvv vvv
+
+- ddos => post 1000 request => password
+
+- đăng nhập xong => logout 
+- check đăng nhập => token => sensitive info
+
+
+
+- usname => unique, email valid
+
+
+- password => 
+
+
+select * from account
+where usname = @usname and password = @password
+
+where usname = @usname and password = a or 1 = 1
+
+@password => "a;  select password from account"
