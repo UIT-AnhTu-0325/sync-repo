@@ -7,10 +7,10 @@
 #include <sstream>
 using namespace std;
 
+class Solution {};
+
 int main()
 {
-    string a;
-    getline(cin, a);
-
-    stack<char> chk = stack<char>();
+    Solution *solution = new Solution();
+    cout << "Hello world";
 }

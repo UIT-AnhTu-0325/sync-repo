@@ -4,8 +4,8 @@ using System.Text;
 var factory = new ConnectionFactory
 {
     HostName = "localhost",
-    UserName = "admin",
-    Password = "password",
+    UserName = "guest",
+    Password = "guest",
 };
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
