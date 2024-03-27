@@ -20,10 +20,11 @@ struct TreeNode
 class Solution
 {
 public:
-    int sumNumbers(TreeNode *root)
+    int maxPathSum(TreeNode *root)
     {
     }
 };
+
 int main()
 {
     Solution *solution = new Solution();
