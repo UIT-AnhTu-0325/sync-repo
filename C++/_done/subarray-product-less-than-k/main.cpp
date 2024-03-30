@@ -14,19 +14,23 @@ public:
     {
         if (k <= 1)
             return 0;
-        unsigned long long prod = 1;
-        int n = nums.size(), l = 0, cnt = 0;
-        for (int r = 0; r < n; r++)
+
+        int right = 0, left = 0;
+        long long product = 1;
+        int sum = 0;
+        while (right < nums.size())
         {
-            prod *= nums[r];
-            while (prod >= k)
+            product *= nums[right];
+
+            while (product >= k && left < nums.size())
             {
-                prod /= nums[l];
-                l++;
+                product /= nums[left];
+                left++;
             }
-            cnt += (r - l + 1);
+            sum += (right - left + 1);
+            right++;
         }
-        return cnt;
+        return sum;
     }
 };
 
