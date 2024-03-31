@@ -6,40 +6,39 @@
 #include <stack>
 #include <sstream>
 using namespace std;
-
 class Solution
 {
 public:
     long long countSubarrays(vector<int> &nums, int minK, int maxK)
     {
+        nums = vector<int>{1, 3, 5, 2, 7, 5};
+        minK = 1;
+        maxK = 5;
+
         int left = 0, right = 0;
         int posMin = -1, posMax = -1;
-        int ans = 0;
+        long long ans = 0;
 
-        while (right < 0)
+        while (right < nums.size())
         {
             if (maxK < nums[right] || minK > nums[right])
             {
-                if (posMin != posMax && posMin != -1 && posMax != -1)
-                {
-                    int cLeft = min(posMin, posMax) - left + 1;
-                    int cRight = right - max(posMin, posMax) + 1;
-                    ans += ((cLeft + 1) * (cRight + 1));
-                    posMin = -1;
-                    posMax = -1;
-                }
-
-                left = right;
+                left = right + 1;
+                right++;
+                continue;
             }
-
             if (nums[right] == minK)
             {
                 posMin = right;
             }
-
             if (nums[right] == maxK)
             {
                 posMax = right;
+            }
+
+            if (posMin >= left && posMax >= left)
+            {
+                ans += (min(posMax, posMin) - left + 1);
             }
 
             right++;
@@ -48,8 +47,11 @@ public:
         return ans;
     }
 };
+
 int main()
 {
     Solution *solution = new Solution();
+    vector<int> a;
+    solution->countSubarrays(a, 1, 2);
     cout << "Hello world";
 }
