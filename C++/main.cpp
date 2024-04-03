@@ -5,6 +5,7 @@
 #include <string>
 #include <stack>
 #include <sstream>
+#include <queue>
 using namespace std;
 
 class Solution {};
