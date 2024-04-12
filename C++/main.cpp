@@ -14,4 +14,4 @@ int main()
 {
     Solution *solution = new Solution();
     cout << "Hello world";
-}
+}   
