@@ -8,10 +8,19 @@
 #include <queue>
 using namespace std;
 
-class Solution {};
-
+class Solution
+{
+public:
+    int trap(vector<int> &height)
+    {
+        int left = 0, right = 0;
+        while (right < height.size())
+        {
+        }
+    }
+};
 int main()
 {
     Solution *solution = new Solution();
     cout << "Hello world";
-}   
+}

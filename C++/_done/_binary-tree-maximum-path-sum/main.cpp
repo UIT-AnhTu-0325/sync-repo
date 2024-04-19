@@ -20,10 +20,27 @@ struct TreeNode
 class Solution
 {
 public:
-    int sumNumbers(TreeNode *root)
+    int maxPath(TreeNode *root, int &crr)
     {
+        if (root == nullptr)
+            return 0;
+
+        int left = max(0, maxPath(root->left, crr));
+        int right = max(0, maxPath(root->right, crr));
+
+        crr = max(crr, left + root->val + right);
+
+        return max(left, right) + root->val;
+    }
+
+    int maxPathSum(TreeNode *root)
+    {
+        int mx = INT32_MIN;
+        maxPath(root, mx);
+        return mx;
     }
 };
+
 int main()
 {
     Solution *solution = new Solution();

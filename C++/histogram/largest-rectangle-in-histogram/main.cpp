@@ -8,10 +8,18 @@
 #include <queue>
 using namespace std;
 
-class Solution {};
+// https://www.youtube.com/watch?v=jC_cWLy7jSI
+
+class Solution
+{
+public:
+    int largestRectangleArea(vector<int> &heights)
+    {
+    }
+};
 
 int main()
 {
     Solution *solution = new Solution();
     cout << "Hello world";
-}   
+}

@@ -8,10 +8,16 @@
 #include <queue>
 using namespace std;
 
-class Solution {};
+class Solution
+{
+public:
+    int maximalRectangle(vector<vector<char>> &matrix)
+    {
+        }
+};
 
 int main()
 {
     Solution *solution = new Solution();
     cout << "Hello world";
-}   
+}
