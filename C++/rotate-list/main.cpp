@@ -20,8 +20,18 @@ struct ListNode
 class Solution
 {
 public:
-    ListNode *removeNthFromEnd(ListNode *head, int n)
+    ListNode *rotateRight(ListNode *head, int k)
     {
+        int n = 0;
+        ListNode *tmp = head;
+        while (tmp != nullptr)
+        {
+            tmp = tmp->next;
+            n++;
+        }
+        k = k % n;
+
+        
     }
 };
 
