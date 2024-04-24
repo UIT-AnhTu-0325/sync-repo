@@ -22,6 +22,11 @@ class Solution
 public:
     ListNode *rotateRight(ListNode *head, int k)
     {
+        if (head == nullptr)
+        {
+            return head;
+        }
+
         int n = 0;
         ListNode *tmp = head;
         while (tmp != nullptr)
@@ -31,7 +36,30 @@ public:
         }
         k = k % n;
 
-        
+        if (k == 0)
+        {
+            return head;
+        }
+
+        ListNode *p1 = head;
+
+        int keep = n - k;
+        while (keep > 1)
+        {
+            p1 = p1->next;
+            keep--;
+        }
+
+        ListNode *newHead = p1->next;
+        p1->next = nullptr;
+        p1 = newHead;
+        while (p1 != nullptr && p1->next != nullptr)
+        {
+            p1 = p1->next;
+        }
+        p1->next = head;
+
+        return newHead;
     }
 };
 
