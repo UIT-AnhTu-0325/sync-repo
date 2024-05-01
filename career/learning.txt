@@ -1,5 +1,6 @@
 1. Networking
     - gRPC, HTTP, HTTPs
+    - DNS, IP, Port
 
 2. System design
     - domain driven
