@@ -2,6 +2,8 @@
     - gRPC, HTTP, HTTPs
     - DNS, IP, Port
 
+    -- Routing
+
 2. System design
     - domain driven
     - micro service
