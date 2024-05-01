@@ -1,0 +1,20 @@
+1. Networking
+    - gRPC, HTTP, HTTPs
+
+2. System design
+    - domain driven
+    - micro service
+    - mono
+    - event source
+    - CQRS
+
+3. Principle
+    - OOP + SOLID
+
+4. Database
+    - ACID
+    - index
+
+5. Other
+    - logging + elastic search
+    - rabbitmq + k8s
