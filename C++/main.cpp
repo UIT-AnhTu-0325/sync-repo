@@ -8,10 +8,12 @@
 #include <queue>
 using namespace std;
 
-class Solution {};
+class Solution
+{
+};
 
 int main()
 {
     Solution *solution = new Solution();
     cout << "Hello world";
-}   
+}

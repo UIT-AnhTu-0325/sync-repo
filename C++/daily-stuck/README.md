@@ -1,1 +1,1 @@
-just for daily stuck problems :)
+Just for daily stuck problems :)
