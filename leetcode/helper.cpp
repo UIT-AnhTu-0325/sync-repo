@@ -24,3 +24,7 @@ class Solution
 {
     unordered_map<pair<string, int>, int, pair_hash> solved;
 };
+
+
+/// @brief these are ways to move in matrix
+vector<vector<int>> adjs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
