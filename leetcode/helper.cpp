@@ -19,12 +19,32 @@ struct pair_hash
         return hash1 ^ hash2;
     }
 };
-
 class Solution
 {
     unordered_map<pair<string, int>, int, pair_hash> solved;
 };
 
-
 /// @brief these are ways to move in matrix
 vector<vector<int>> adjs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+/// @brief count Frequency of vector
+/// @param nums
+void countFrequency(vector<int> &nums)
+{
+    int n = nums.size();
+    vector<int> frequency(n + 1, 0);
+
+    for (int num : nums)
+    {
+        frequency[min(n, num)]++;
+    }
+}
+
+/// @brief count Frequency of vector
+void sortPairVector(vector<int> &nums)
+{
+    vector<pair<int, int>> costs;
+    sort(costs.begin(), costs.end(),
+         [](const pair<int, int> &a, const pair<int, int> &b)
+         { return a.second < b.second; });
+}
