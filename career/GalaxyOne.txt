@@ -1,0 +1,26 @@
+- Main app
+    + build service use .NETcore + React
+    + devide small module instead of micro service
+        => mono easier to build & maintenance
+    + each module use simple clean architechture
+        => three main layer: controller, service, repository
+    + module 1 -> business module, CRUD follow user requirement
+        from Business Op => Business plan => Service Request
+        =>Estimated Settlement => Contract => Quotation => Settlement
+
+        -> include report page, manage item status by rabbitmq
+            main service action => push message 
+            => other message will consume & update status
+            => reduce task for main service
+    + module 2 -> approval wf: every item have the approval workflow,
+        in some step will need someone approve, reject or return it
+        
+        => have approval procedure, approval approver, approval approving
+        approval step...
+    + module 3 -> integration: every item action will integrate with 
+        workit system, need update realtime & not block main service
+        => new simple system have controller & service
+        => many request need handler => rabbitmq will help us to manage those
+        => main service will make Http call (for easy expand or integrate with other service)
+        => consume message & get system status => call 3rd API
+    

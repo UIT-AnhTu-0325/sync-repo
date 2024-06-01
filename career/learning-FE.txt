@@ -1,0 +1,7 @@
+RxJS:
+    - Observer pattern
+    
+
+React course:
+    - React component render ONE TIME
+    - Hook need define inside and top level of component
