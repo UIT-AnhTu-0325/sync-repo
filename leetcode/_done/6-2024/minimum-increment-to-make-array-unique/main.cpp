@@ -8,27 +8,28 @@
 #include <queue>
 using namespace std;
 
+// daily-question 2024-06-14
 class Solution
 {
 public:
-    bool checkArray(vector<int> &nums, int k)
+    int minIncrementForUnique(vector<int> &nums)
     {
-        nums.insert(nums.begin(), 0);
-        nums.insert(nums.end(), 0);
-
-        int sum = 0;
+        sort(nums.begin(), nums.end());
+        int res = 0;
         for (int i = 1; i < nums.size(); i++)
         {
-            sum += (nums[i] - nums[i - 1]);
+            while (nums[i] <= nums[i - 1])
+            {
+                nums[i]++;
+                res++;
+            }
         }
-        return sum == 0;
+        return res;
     }
 };
 
 int main()
 {
     Solution *solution = new Solution();
-    vector<int> inp = {60, 72, 87, 89, 63, 52, 64, 62, 31, 37, 57, 83, 98, 94, 92, 77, 94, 91, 87, 100, 91, 91, 50, 26};
-    solution->checkArray(inp, 4);
     cout << "Hello world";
 }
