@@ -2,9 +2,6 @@ RxJS:
     - Observer pattern
     
 
-React course:
-    - React component render ONE TIME
-    - Hook need define inside and top level of component
-
-    - useState => use fucntion with previous useState
-    - use ... with array or object to copy
+React:
+    - Hook
+    - Virtual DOM
