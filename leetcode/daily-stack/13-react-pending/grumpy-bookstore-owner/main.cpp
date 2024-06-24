@@ -8,14 +8,15 @@
 #include <queue>
 using namespace std;
 
-// daily-question 2024-06-16
+// daily-question 2024-06-21
 class Solution
 {
 public:
-    int minPatches(vector<int> &nums, int n)
+    int maxSatisfied(vector<int> &customers, vector<int> &grumpy, int minutes)
     {
     }
 };
+
 int main()
 {
     Solution *solution = new Solution();
