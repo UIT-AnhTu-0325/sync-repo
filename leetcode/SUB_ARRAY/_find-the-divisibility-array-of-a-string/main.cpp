@@ -10,6 +10,10 @@ using namespace std;
 
 class Solution
 {
+public:
+    vector<int> divisibilityArray(string word, int m)
+    {
+    }
 };
 
 int main()
