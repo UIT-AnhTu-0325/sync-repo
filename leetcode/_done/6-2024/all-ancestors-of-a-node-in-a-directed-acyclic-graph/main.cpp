@@ -8,40 +8,46 @@
 #include <queue>
 using namespace std;
 
+// daily-question 2024-06-29
 class Solution
 {
 public:
-    void dfs(vector<vector<int>> relate, int parrent, int crr, vector<vector<int>> &res, vector<bool> visit)
-    {
-        visit[crr] = true;
-        for (int i = 0; i < relate[crr].size(); i++)
-        {
-            int child = relate[crr][i];
-            if (!visit[child])
-            {
-            }
-        }
-    }
-
     vector<vector<int>> getAncestors(int n, vector<vector<int>> &edges)
     {
-        vector<vector<int>> res = vector<vector<int>>(n, vector<int>());
-        vector<vector<int>> relate = vector<vector<int>>(n, vector<int>());
-        vector<bool> hasChild = vector<bool>(n, false);
+        vector<vector<int>> res(n);
+        vector<vector<int>> graph(n);
 
-        for (vector<int> edge : edges)
+        for (const auto &edge : edges)
         {
-            relate[edge[0]].push_back(edge[1]);
-            hasChild[edge[1]] = true;
+            graph[edge[0]].push_back(edge[1]);
         }
-        queue<pair<int, int>> build;
-        for (int i = 0; i < n; i++)
+
+        for (int i = 0; i < n; ++i)
         {
-            if (!hasChild[i])
-                build.push({-1, i});
+            vector<bool> visit(n, false);
+            dfs(graph, i, i, res, visit);
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            sort(res[i].begin(), res[i].end());
         }
 
         return res;
+    }
+
+private:
+    void dfs(vector<vector<int>> &graph, int parent, int curr, vector<vector<int>> &res, vector<bool> &visit)
+    {
+        visit[curr] = true;
+        for (int dest : graph[curr])
+        {
+            if (!visit[dest])
+            {
+                res[dest].push_back(parent);
+                dfs(graph, parent, dest, res, visit);
+            }
+        }
     }
 };
 

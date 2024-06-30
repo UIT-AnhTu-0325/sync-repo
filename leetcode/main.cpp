@@ -6,6 +6,7 @@
 #include <stack>
 #include <sstream>
 #include <queue>
+#include <bitset>
 using namespace std;
 
 class Solution

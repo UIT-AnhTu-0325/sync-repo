@@ -11,7 +11,7 @@ using namespace std;
 class Solution
 {
 public:
-    long long wonderfulSubstrings(string word)
+    int maxNumEdgesToRemove(int n, vector<vector<int>> &edges)
     {
     }
 };
