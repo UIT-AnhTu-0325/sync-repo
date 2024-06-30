@@ -6,11 +6,19 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-15
 class Solution
 {
+public:
+    int findMaximizedCapital(int k, int w, vector<int> &profits, vector<int> &capital)
+    {
+        int res = 0;
+        while (k > 0 && !profits.empty())
+        {
+        }
+    }
 };
 
 int main()

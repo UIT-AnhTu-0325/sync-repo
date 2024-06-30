@@ -6,11 +6,15 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-18
 class Solution
 {
+public:
+    int maxProfitAssignment(vector<int> &difficulty, vector<int> &profit, vector<int> &worker)
+    {
+    }
 };
 
 int main()

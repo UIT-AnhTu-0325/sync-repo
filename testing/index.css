@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    border: 1px solid black; /* For visualization */
+}
+
+.a {
+    position: relative; /* Ensure A is relatively positioned */
+}
+
+.b {
+    position: absolute; /* Absolute positioning of B */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make sure B spans the entire width of A */
+    height: 2000px;
+}

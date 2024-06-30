@@ -6,11 +6,15 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-20
 class Solution
 {
+public:
+    int maxDistance(vector<int> &position, int m)
+    {
+    }
 };
 
 int main()

@@ -6,11 +6,22 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-02
 class Solution
 {
+public:
+    void reverseString(vector<char> &s)
+    {
+        int left = 0, right = s.size() - 1;
+        while (left < right)
+        {
+            swap(s[left], s[right]);
+            left++;
+            right--;
+        }
+    }
 };
 
 int main()

@@ -6,11 +6,15 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-19
 class Solution
 {
+public:
+    int minDays(vector<int> &bloomDay, int m, int k)
+    {
+    }
 };
 
 int main()

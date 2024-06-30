@@ -40,7 +40,7 @@ void countFrequency(vector<int> &nums)
     }
 }
 
-/// @brief count Frequency of vector
+/// @brief sort vector of Pair
 void sortPairVector(vector<int> &nums)
 {
     vector<pair<int, int>> costs;

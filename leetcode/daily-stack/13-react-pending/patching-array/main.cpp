@@ -6,13 +6,16 @@
 #include <stack>
 #include <sstream>
 #include <queue>
-#include <bitset>
 using namespace std;
 
+// daily-question 2024-06-16
 class Solution
 {
+public:
+    int minPatches(vector<int> &nums, int n)
+    {
+    }
 };
-
 int main()
 {
     Solution *solution = new Solution();
