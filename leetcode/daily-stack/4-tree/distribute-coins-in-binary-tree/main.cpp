@@ -21,12 +21,33 @@ struct TreeNode
 class Solution
 {
 public:
+    int calc(TreeNode *root, int &crr)
+    {
+        if (root == nullptr)
+            return 0;
+        int needLeft = calc(root->left, crr);
+        int needRight = calc(root->right, crr);
+        root->val -= needLeft;
+        root->val -= needRight;
+        crr += abs(needLeft);
+        crr += abs(needRight);
+        return 1 - root->val;
+    }
     int distributeCoins(TreeNode *root)
     {
+        int res = 0;
+        calc(root, res);
+        return res;
     }
 };
+
 int main()
 {
+    TreeNode *inp =
+        new TreeNode(1,
+                     new TreeNode(0, nullptr, new TreeNode(3)),
+                     new TreeNode(0));
     Solution *solution = new Solution();
+    solution->distributeCoins(inp);
     cout << "Hello world";
 }
