@@ -21,8 +21,23 @@ struct ListNode
 class Solution
 {
 public:
+    int calc(ListNode *head)
+    {
+        if (head == nullptr)
+            return 0;
+        int mem = calc(head->next);
+        head->val = head->val * 2 + mem;
+        int memback = head->val >= 10 ? 1 : 0;
+        head->val = head->val % 10;
+        return memback;
+    }
     ListNode *doubleIt(ListNode *head)
     {
+        int mem = calc(head);
+        if (mem == 0)
+            return head;
+        else
+            return new ListNode(mem, head);
     }
 };
 

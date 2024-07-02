@@ -48,3 +48,20 @@ void sortPairVector(vector<int> &nums)
          [](const pair<int, int> &a, const pair<int, int> &b)
          { return a.second < b.second; });
 }
+
+/// @brief split string
+/// @param str 
+/// @return 
+vector<int> splitStringByDot(const string &str)
+    {
+        vector<int> result;
+        stringstream ss(str);
+        string item;
+
+        while (getline(ss, item, '.'))
+        {
+            result.push_back(stoi(item));
+        }
+
+        return result;
+    }
