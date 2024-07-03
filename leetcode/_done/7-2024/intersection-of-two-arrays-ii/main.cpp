@@ -9,6 +9,7 @@
 #include <bitset>
 using namespace std;
 
+// daily-question 2024-07-02
 class Solution
 {
 public:
