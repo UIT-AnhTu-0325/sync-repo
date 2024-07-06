@@ -3,13 +3,20 @@
 #include <iostream>
 #include <queue>
 #include <sstream>
-#include <stack>
+#include <stack>s
 #include <string>
 #include <unordered_map>
 #include <vector>
 using namespace std;
 
-class Solution {};
+// daily-question 2024-07-06
+class Solution {
+  public:
+    int passThePillow(int n, int time) {
+        int mod = time % (2 * n - 2);
+        return mod > (n - 1) ? n - (mod - n) - 1 : mod + 1;
+    }
+};
 
 int main() {
     Solution *solution = new Solution();
