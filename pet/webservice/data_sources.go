@@ -42,7 +42,7 @@ func initDS() (*dataSources, error) {
 
 	//MongoDb
 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	opts := options.Client().ApplyURI("mongodb+srv://blinkcat:gaugau123@go-web-database.anwszwv.mongodb.net/?retryWrites=true&w=majority").SetServerAPIOptions(serverAPI)
+	opts := options.Client().ApplyURI("").SetServerAPIOptions(serverAPI)
 	client, err := mongo.Connect(context.TODO(), opts)
 	if err != nil {
 		return nil, fmt.Errorf("error connecting to mongo db: %w", err)
