@@ -48,5 +48,6 @@ func delNodes(root *TreeNode, to_delete []int) []*TreeNode {
 
 func main() {
 	fmt.Println("Hello, It's me")
+	delNodes(nil, []int{})
 }
 
