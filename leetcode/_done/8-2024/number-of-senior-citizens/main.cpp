@@ -9,11 +9,16 @@
 #include <vector>
 using namespace std;
 
-// daily-question 2024-07-20
+// daily-question 2024-08-01
 class Solution {
   public:
-    vector<vector<int>> restoreMatrix(vector<int> &rowSum, vector<int> &colSum) {
-
+    int countSeniors(vector<string> &details) {
+        int ans = 0;
+        for (auto &x : details) {
+            int age = stoi(x.substr(11, 2));
+            ans += age > 60;
+        }
+        return ans;
     }
 };
 
