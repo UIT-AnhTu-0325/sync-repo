@@ -1,8 +1,0 @@
-- debug vscode docker
-  https://dev.to/bruc3mackenzi3/debugging-go-inside-docker-using-vscode-4f67
-
-- setup mysql & pgAdmin
-  https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection
-
-- tutorial go & gin
-  https://dev.to/jacobsngoodwin/full-stack-memory-app-01-setup-go-server-with-reload-in-docker-62n
