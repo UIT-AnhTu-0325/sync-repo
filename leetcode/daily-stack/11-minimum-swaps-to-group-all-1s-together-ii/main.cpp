@@ -9,15 +9,13 @@
 #include <vector>
 using namespace std;
 
-// daily-question 2024-07-20
+// daily-question 2024-08-02
 class Solution {
-  public:
-    vector<vector<int>> restoreMatrix(vector<int> &rowSum, vector<int> &colSum) {
-
-    }
+   public:
+    int minSwaps(vector<int>& nums) {}
 };
 
 int main() {
-    Solution *solution = new Solution();
+    Solution* solution = new Solution();
     cout << "Hello world";
 }

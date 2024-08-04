@@ -1,7 +1,0 @@
-RxJS:
-    - Observer pattern
-    
-
-React:
-    - Hook
-    - Virtual DOM

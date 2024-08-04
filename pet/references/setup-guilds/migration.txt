@@ -1,5 +1,0 @@
-- create migration to add table
-  make migrate-create NAME=add_users_table
-
-- run migaration
-  make migrate-up
