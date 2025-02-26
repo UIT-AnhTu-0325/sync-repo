@@ -5,10 +5,9 @@ package main
 import "sort"
 
 type Pair struct {
-	first   int
+	first  int
 	second int
 }
-
 
 func createPairs(firsts []int, seconds []int, quantity int) []Pair {
 	pairs := make([]Pair, quantity)
@@ -26,4 +25,25 @@ func sortPair(firsts []int, seconds []int) []Pair {
 		return pairs[i].second > pairs[j].second
 	})
 	return pairs
+}
+
+func _max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func _min(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func _abs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
 }
