@@ -9,7 +9,7 @@ type Pair struct {
 	second int
 }
 
-func createPairs(firsts []int, seconds []int, quantity int) []Pair {
+func _createPairs(firsts []int, seconds []int, quantity int) []Pair {
 	pairs := make([]Pair, quantity)
 	for i := 0; i < quantity; i++ {
 		pairs[i] = Pair{first: firsts[i], second: seconds[i]}
@@ -17,9 +17,9 @@ func createPairs(firsts []int, seconds []int, quantity int) []Pair {
 	return pairs
 }
 
-func sortPair(firsts []int, seconds []int) []Pair {
+func _sortPair(firsts []int, seconds []int) []Pair {
 	quantity := len(firsts)
-	pairs := createPairs(firsts, seconds, quantity)
+	pairs := _createPairs(firsts, seconds, quantity)
 
 	sort.Slice(pairs, func(i, j int) bool {
 		return pairs[i].second > pairs[j].second
@@ -46,4 +46,10 @@ func _abs(n int) int {
 		return -n
 	}
 	return n
+}
+
+func _minDistanceCircular(n, i, j int) int {
+	forward := (j - i + n) % n
+	backward := (i - j + n) % n
+	return min(forward, backward)
 }
