@@ -3,6 +3,7 @@
 package main
 
 import (
+	"slices"
 	"sort"
 )
 
@@ -29,18 +30,12 @@ func _sortPair(firsts []int, seconds []int) []Pair {
 	return pairs
 }
 
-func _max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
+func _max(nums ...int) int {
+	return slices.Max(nums)
 }
 
-func _min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+func _min(nums ...int) int {
+	return slices.Min(nums)
 }
 
 func _abs(n int) int {
