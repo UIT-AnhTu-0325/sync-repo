@@ -45,8 +45,39 @@ func _abs(n int) int {
 	return n
 }
 
-func _minDistanceCircular(n, i, j int) int {
-	forward := (j - i + n) % n
-	backward := (i - j + n) % n
-	return min(forward, backward)
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func _buildTree(values []any) *TreeNode {
+	if len(values) == 0 || values[0] == nil {
+		return nil
+	}
+
+	root := &TreeNode{Val: values[0].(int)}
+	queue := []*TreeNode{root}
+	i := 1
+
+	for i < len(values) {
+		current := queue[0]
+		queue = queue[1:]
+
+		// Left child
+		if i < len(values) && values[i] != nil {
+			current.Left = &TreeNode{Val: values[i].(int)}
+			queue = append(queue, current.Left)
+		}
+		i++
+
+		// Right child
+		if i < len(values) && values[i] != nil {
+			current.Right = &TreeNode{Val: values[i].(int)}
+			queue = append(queue, current.Right)
+		}
+		i++
+	}
+
+	return root
 }
