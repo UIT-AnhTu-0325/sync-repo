@@ -8,11 +8,15 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <set>
 using namespace std;
 
-class Solution {};
+class Solution
+{
+};
 
-int main() {
+int main()
+{
     Solution *solution = new Solution();
     cout << "Hello world";
 }
